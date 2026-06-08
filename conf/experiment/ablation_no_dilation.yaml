@@ -1,0 +1,4 @@
+# @package _global_
+name: ablation_no_dilation
+model:
+  use_dilation: false

@@ -1,0 +1,5 @@
+# @package _global_
+name: ablation_temp_only
+data:
+  modalities:
+    - temp

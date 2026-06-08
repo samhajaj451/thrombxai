@@ -1,0 +1,4 @@
+# @package _global_
+name: ablation_no_temporal
+model:
+  use_temporal_attention: false

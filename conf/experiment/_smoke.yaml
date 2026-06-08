@@ -1,0 +1,27 @@
+# @package _global_
+# for unit-test smoke only; do not use for reporting
+name: _smoke
+seeds: 1
+data:
+  synthetic: true
+  time_steps: 48
+  batch_size: 8
+  num_subjects: 48
+  num_workers: 0
+model:
+  hidden_dim: 32
+  tcn_layers: 3
+  attn_heads: 2
+  attn_dim: 16
+  spatial_attn_dim: 16
+  feature_embed_dim: 32
+  mlp_hidden: 32
+  dropout: 0.0
+train:
+  epochs: 2
+  grad_accum: 1
+  early_stop_patience: 100
+  log_every: 1
+edge:
+  distill_epochs: 1
+  student_hidden: 32

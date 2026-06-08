@@ -1,0 +1,5 @@
+# @package _global_
+name: ablation_hrv_only
+data:
+  modalities:
+    - hrv

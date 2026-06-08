@@ -1,0 +1,12 @@
+defaults:
+  - thrombxai_config
+  - model: full
+  - experiment: main
+  - _self_
+
+hydra:
+  run:
+    dir: outputs/${name}
+  output_subdir: null
+  job:
+    chdir: false

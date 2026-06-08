@@ -1,0 +1,26 @@
+ThrombXAI — Dataset access links
+=================================
+Datasets used in the study, with their public access URLs.
+
+Primary dataset
+---------------
+Name        : MIMIC-IV Waveform Database
+Identifier  : mimic4wdb
+Role        : ECG waveforms and vital signs used for training and evaluation
+              (Methods Section IV.A; Reproducibility Statement)
+Cohort      : 2,847 patients - 4,271 four-hour windows - 21.9% positive
+              subject-level split 70/15/15 (1,993 / 427 / 427 patients)
+Access      : PhysioNet credentialed access (PhysioNet Credentialed Health Data License)
+URL         : https://physionet.org/content/mimic4wdb/
+
+Supporting links
+----------------
+MIMIC-IV (parent clinical database) : https://physionet.org/content/mimiciv/
+PhysioNet (host)                    : https://physionet.org/
+
+Notes
+-----
+The records are de-identified and credentialed; they are not redistributable. Obtain PhysioNet
+credentials before downloading. Offline runs in this release use a deterministic synthetic cohort;
+the real records load through the manifest path once placed under data/mimic4wdb (see
+scripts/prepare_data.sh and docs/deviations.md).

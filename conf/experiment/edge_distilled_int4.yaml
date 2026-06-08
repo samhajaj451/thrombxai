@@ -1,0 +1,5 @@
+# @package _global_
+name: edge_distilled_int4
+edge:
+  quant_bits: 4
+  quant_symmetric: true
