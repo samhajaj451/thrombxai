@@ -1,0 +1,115 @@
+TCE ThrombXAI paper-values smoke
+=================================
+paper       : Explainable AI-Enabled Wearable Sensors for Real-Time Thrombotic Event Early Warning in Connected Health Environments
+values file : tce_reported_values.json
+run root    : TCE_Explainable_AI_Enabled_Wearable_Sensors_for_Real_Time_Thrombotic_Event_Early_Warning
+overall     : PARTIALLY_VERIFIED
+
+status counts
+  PASS    : 69
+  FAIL    : 5
+  NOT_RUN : 0
+  BLOCKED : 2
+  TOTAL   : 76
+
+checks
+  [PASS    ] A1   the positive and negative case counts account for every patient
+  [PASS    ] A2   the positive rate recomputed from the case counts
+  [PASS    ] A3   the three partition sizes sum to the cohort size
+  [PASS    ] A4   the training partition holds the stated fraction of patients
+  [PASS    ] A5   the validation partition holds the stated fraction of patients
+  [PASS    ] A6   the input width is the sum of the two modality blocks
+  [PASS    ] B1   the analysis set is the enrolled count less the eight lost to follow-up
+  [PASS    ] B2   the ThrombXAI confusion counts add up to the analysis set
+  [FAIL    ] B3   the Table IV header N matches the confusion counts beneath it
+             the header reads N=156 for an intention-to-treat analysis while the counts sum to 148; the text calls 148 the per-protocol subset, so the header is mislabelled
+  [PASS    ] B4   the standard-screening confusion counts add up to the analysis set
+  [PASS    ] B5   the analysed events equal the ThrombXAI true positives plus false negatives
+  [PASS    ] B6   the event breakdown matches the reported event total
+  [PASS    ] B7   ThrombXAI sensitivity recomputed from the counts
+  [FAIL    ] B8   ThrombXAI specificity recomputed from the counts
+             109/120 evaluates to 90.8 per cent, so the reported 91.5 per cent does not follow from the counts; the same figure also appears in the abstract
+  [PASS    ] B9   ThrombXAI positive predictive value recomputed from the counts
+  [PASS    ] B10  ThrombXAI negative predictive value recomputed from the counts
+  [PASS    ] B11  standard-screening sensitivity recomputed from the counts
+  [PASS    ] B12  standard-screening specificity recomputed from the counts
+  [PASS    ] B13  standard-screening positive predictive value recomputed from the counts
+  [PASS    ] B14  standard-screening negative predictive value recomputed from the counts
+  [PASS    ] B15  ThrombXAI early detections recomputed from the event total
+  [PASS    ] B16  standard-screening early detections recomputed from the event total
+  [PASS    ] C1   the accuracy gain over the named baseline
+  [PASS    ] C2   the AUROC gain over the named baseline
+  [FAIL    ] C3   the baseline named as strongest also holds the highest baseline AUROC
+             ModernTCN holds the best baseline accuracy (87.1) but iTransformer holds the best baseline AUROC (0.91); measured against that row the AUROC gain is 2.6 per cent, not the reported 2.8
+  [PASS    ] C4   the reported accuracy exceeds every baseline in the comparison table
+  [PASS    ] C5   the dilated causal stack has the reported receptive field
+  [PASS    ] C6   the INT8 accuracy drop against the full model
+  [PASS    ] C7   the INT4 accuracy drop against the full model
+  [PASS    ] C8   every bootstrap interval brackets its point estimate
+  [PASS    ] D1   the CRGA accuracy gain against the no-CRGA ablation
+  [PASS    ] D2   the CRGA attention overlap gain against the no-CRGA ablation
+  [PASS    ] D3   the accuracy lost when temporal attention is removed
+  [PASS    ] D4   the accuracy lost when spatial attention is removed
+  [PASS    ] D5   the accuracy gained by fusing skin temperature with the HRV block
+  [PASS    ] D6   temporal attention matters more than spatial attention for accuracy
+  [PASS    ] D7   the full-configuration row reproduces the headline accuracy
+  [PASS    ] D8   the full-configuration row reproduces the headline AUROC
+  [PASS    ] E1   the comprehensiveness at ten per cent reads as the stated confidence drop
+  [PASS    ] E2   the sufficiency at twenty per cent reads as the stated prediction retained
+  [PASS    ] E3   the attention overlap gain over the best baseline overlap
+  [PASS    ] E4   the baseline named for the overlap gain holds the best baseline overlap
+  [PASS    ] E5   the clinician rating reads as the stated mean out of five
+  [PASS    ] F1   the INT8 size reduction against the full model
+  [PASS    ] F2   the INT8 latency reduction against the full model
+  [PASS    ] F3   the INT8 serving latency matches the reported target
+  [PASS    ] F4   the wearable battery energy follows from capacity and voltage
+  [PASS    ] F5   the duty-cycled effective power follows from the INT8 draw
+  [PASS    ] F6   the runtime estimate follows from energy over effective power
+  [PASS    ] F7   accuracy does not rise across the four deployment configurations
+  [PASS    ] F8   model size does not rise across the four deployment configurations
+  [PASS    ] G1   the age and sex partitions cover the same number of samples
+  [FAIL    ] G2   the subgroup partition matches the described test partition size
+             the test partition is 15 per cent of the 4,271 windows (640.7 samples) or 427 patients, while the subgroup partitions sum to 1,074 and match neither reading
+  [PASS    ] G3   the age-weighted prevalence reproduces the cohort prevalence
+  [PASS    ] G4   the sex-weighted prevalence reproduces the cohort prevalence
+  [PASS    ] G5   the age-weighted accuracy reproduces the headline accuracy
+  [PASS    ] G6   the sex-weighted accuracy reproduces the headline accuracy
+  [PASS    ] H1   the top-ten attention weights sum to the reported total
+  [PASS    ] H2   the top-ten and remaining weights account for the whole softmax mass
+  [PASS    ] H3   the clinician ranks attached to the top ten are a permutation of one to ten
+  [PASS    ] H4   the two HRV features the text names as most attended are both present
+  [BLOCKED ] I1   the retrospective table values are recomputed from the source waveforms
+             MIMIC-IV Waveform Database (mimic4wdb) sits behind a PhysioNet credentialed health data licence and the records are not redistributable (https://physionet.org/content/mimic4wdb/), so only the published aggregates are checkable here
+  [BLOCKED ] I2   the prospective validation values are recomputed from participant records
+             156 participants at two academic medical centres under IRB Protocol #2023-0847, not released with the manuscript
+  [PASS    ] K1   the cohort carries the reported input width over three subject-level partitions
+  [PASS    ] K2   a forward pass returns a per-subject risk inside the unit interval
+  [PASS    ] K3   the spatial attention weights form a distribution over the feature axis
+  [PASS    ] K4   the temporal attention weights form a distribution over the time axis
+  [PASS    ] K5   the focal objective backpropagates finite gradients
+  [PASS    ] K6   an AdamW step moves the parameters
+  [PASS    ] K7   the training loop completes the configured epochs with finite losses
+  [PASS    ] K8   a checkpoint round-trip reproduces the parameter tensors
+  [PASS    ] K9   the encoder reports the receptive field the manuscript derives
+  [FAIL    ] K10  the full-precision parameter count matches the architecture table
+             the two inner widths the manuscript leaves unnamed are engineering defaults (docs/deviations.md D6), so the count sits 25.8 per cent above the tabulated value
+  [PASS    ] K11  the edge parameter count matches the architecture table
+  [PASS    ] K12  the clinical prior weight anneals to zero across the warmup window
+  [PASS    ] K13  the smoke cohort stands in for the credentialed cohort
+
+consistency findings: 5
+  B3: expected 156, observed 148
+  B8: expected 91.5, observed 90.8
+  C3: expected iTransformer at 0.91, observed ModernTCN at 0.908
+  G2: expected 640.6, observed 1074.0
+  K10: expected 1080000, observed 1358721
+
+deviations
+  D1 [open] the full model carries 1.36M parameters against a tabulated 1.08M
+  D2 [accepted] the smoke cohort is 96 subjects at 48 steps, hidden width 48
+  D3 [accepted] the smoke trains two epochs with dropout disabled
+  D4 [unresolved] the reported specificity of 91.5 per cent is left unreconciled
+
+blocked inputs
+  I1: MIMIC-IV Waveform Database (mimic4wdb) sits behind a PhysioNet credentialed health data licence and the records are not redistributable (https://physionet.org/content/mimic4wdb/), so only the published aggregates are checkable here
+  I2: 156 participants at two academic medical centres under IRB Protocol #2023-0847, not released with the manuscript

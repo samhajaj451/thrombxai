@@ -1,0 +1,301 @@
+{
+  "schema_version": 1,
+  "source": {
+    "title": "Explainable AI-Enabled Wearable Sensors for Real-Time Thrombotic Event Early Warning in Connected Health Environments",
+    "venue": "IEEE Transactions on Consumer Electronics",
+    "page_count": 19,
+    "extraction_scope": "partial",
+    "note": "Only the values the smoke run recomputes or feeds into the cohort schema are transcribed. Every entry carries its table or section anchor."
+  },
+  "cohort": {
+    "anchor": "Table I, Sec. IV.A.1, Sec. IV.A.2",
+    "patients": 2847,
+    "samples_four_hour_windows": 4271,
+    "positive_cases": 624,
+    "negative_cases": 2223,
+    "positive_rate_pct": 21.9,
+    "mean_age_years": 62.4,
+    "mean_age_sd": 15.7,
+    "female_pct": 43.2,
+    "window_hours": 4.0,
+    "split": {
+      "train_patients": 1993,
+      "val_patients": 427,
+      "test_patients": 427,
+      "train_frac": 0.70,
+      "val_frac": 0.15,
+      "test_frac": 0.15
+    }
+  },
+  "features": {
+    "anchor": "Sec. III.A, Sec. III.B",
+    "modalities": 2,
+    "num_features": 19,
+    "hrv_features": 12,
+    "temp_features": 7,
+    "hrv_window_s": 300.0,
+    "hrv_stride_s": 60.0,
+    "bandpass_hz": [0.5, 40.0],
+    "ibi_bounds_ms": [300.0, 2000.0],
+    "temp_median_window": 5
+  },
+  "architecture": {
+    "anchor": "Table V, Sec. III.C, Sec. III.F",
+    "full": {
+      "input_features": 19,
+      "hidden_dim": 256,
+      "tcn_layers": 4,
+      "tcn_kernel": 3,
+      "attn_heads": 8,
+      "attn_dim": 32,
+      "mlp_hidden": 512,
+      "dropout": 0.3,
+      "params_millions": 1.08,
+      "size_fp32_mb": 4.2,
+      "size_int8_mb": 1.05
+    },
+    "edge": {
+      "input_features": 19,
+      "hidden_dim": 64,
+      "tcn_layers": 3,
+      "tcn_kernel": 3,
+      "attn_heads": 2,
+      "attn_dim": 32,
+      "mlp_hidden": 128,
+      "dropout": 0.2,
+      "params_thousands": 68.2,
+      "size_fp32_mb": 0.52,
+      "size_int8_mb": 0.13
+    }
+  },
+  "training": {
+    "anchor": "Table VI, Sec. IV.D",
+    "optimizer": "AdamW",
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 64,
+    "grad_accum": 4,
+    "epochs": 100,
+    "early_stop_patience": 15,
+    "scheduler": "cosine_annealing",
+    "warmup_epochs": 5,
+    "lambda_kl": 0.1,
+    "lambda_smooth": 0.05,
+    "crga_warmup_epochs": 20,
+    "focal_gamma": 2.0,
+    "distill_temperature": 4.0,
+    "distill_alpha": 0.7,
+    "dropped_l2_default": "the Eq. (24) L2 term is realised through AdamW weight decay; see docs/deviations.md D2"
+  },
+  "headline_metrics": {
+    "anchor": "Table II, Sec. V.A, Abstract",
+    "ours": {
+      "accuracy_pct": 91.3,
+      "accuracy_sd": 0.5,
+      "auroc": 0.936,
+      "auroc_sd": 0.005,
+      "auprc": 0.887,
+      "auprc_sd": 0.007,
+      "sensitivity_pct": 89.1,
+      "sensitivity_sd": 0.7,
+      "specificity_pct": 92.0,
+      "specificity_sd": 0.6,
+      "f1": 0.897,
+      "f1_sd": 0.006,
+      "npv_pct": 96.8,
+      "npv_sd": 0.4
+    }
+  },
+  "baselines": {
+    "anchor": "Table II",
+    "rows": [
+      {"method": "Logistic Regression", "family": "traditional_ml", "accuracy_pct": 75.8, "auroc": 0.798, "auprc": 0.612, "sensitivity_pct": 68.4, "specificity_pct": 77.9, "f1": 0.684, "npv_pct": 87.1},
+      {"method": "Random Forest", "family": "traditional_ml", "accuracy_pct": 79.3, "auroc": 0.841, "auprc": 0.689, "sensitivity_pct": 73.6, "specificity_pct": 80.9, "f1": 0.734, "npv_pct": 89.6},
+      {"method": "XGBoost", "family": "traditional_ml", "accuracy_pct": 81.9, "auroc": 0.867, "auprc": 0.728, "sensitivity_pct": 76.2, "specificity_pct": 83.5, "f1": 0.768, "npv_pct": 91.2},
+      {"method": "LSTM", "family": "deep_learning", "accuracy_pct": 82.5, "auroc": 0.873, "auprc": 0.743, "sensitivity_pct": 77.4, "specificity_pct": 83.9, "f1": 0.781, "npv_pct": 91.5},
+      {"method": "TCN", "family": "deep_learning", "accuracy_pct": 84.1, "auroc": 0.886, "auprc": 0.768, "sensitivity_pct": 79.2, "specificity_pct": 85.5, "f1": 0.802, "npv_pct": 92.4},
+      {"method": "Transformer", "family": "deep_learning", "accuracy_pct": 84.6, "auroc": 0.891, "auprc": 0.781, "sensitivity_pct": 80.1, "specificity_pct": 85.8, "f1": 0.811, "npv_pct": 92.8},
+      {"method": "InceptionTime", "family": "deep_learning", "accuracy_pct": 85.3, "auroc": 0.897, "auprc": 0.794, "sensitivity_pct": 81.2, "specificity_pct": 86.4, "f1": 0.822, "npv_pct": 93.2},
+      {"method": "RETAIN", "family": "healthcare", "accuracy_pct": 83.8, "auroc": 0.883, "auprc": 0.761, "sensitivity_pct": 78.6, "specificity_pct": 85.2, "f1": 0.796, "npv_pct": 92.1},
+      {"method": "SAnD", "family": "healthcare", "accuracy_pct": 84.4, "auroc": 0.889, "auprc": 0.778, "sensitivity_pct": 79.8, "specificity_pct": 85.7, "f1": 0.808, "npv_pct": 92.6},
+      {"method": "RAIM", "family": "healthcare", "accuracy_pct": 85.6, "auroc": 0.901, "auprc": 0.801, "sensitivity_pct": 81.7, "specificity_pct": 86.7, "f1": 0.827, "npv_pct": 93.5},
+      {"method": "TimesNet", "family": "recent", "accuracy_pct": 86.0, "auroc": 0.904, "auprc": 0.808, "sensitivity_pct": 82.3, "specificity_pct": 87.0, "f1": 0.833, "npv_pct": 93.8},
+      {"method": "PatchTST", "family": "recent", "accuracy_pct": 86.5, "auroc": 0.907, "auprc": 0.816, "sensitivity_pct": 82.9, "specificity_pct": 87.5, "f1": 0.841, "npv_pct": 94.1},
+      {"method": "iTransformer", "family": "recent", "accuracy_pct": 86.8, "auroc": 0.910, "auprc": 0.821, "sensitivity_pct": 83.4, "specificity_pct": 87.8, "f1": 0.846, "npv_pct": 94.4},
+      {"method": "ModernTCN", "family": "recent", "accuracy_pct": 87.1, "auroc": 0.908, "auprc": 0.825, "sensitivity_pct": 83.8, "specificity_pct": 88.0, "f1": 0.850, "npv_pct": 94.6}
+    ]
+  },
+  "improvement_claims": {
+    "anchor": "Sec. V.A, Abstract, Sec. VII",
+    "against": "ModernTCN",
+    "accuracy_gain_pct_points": 4.2,
+    "auroc_gain_points": 0.028,
+    "auroc_gain_pct": 2.8
+  },
+  "ablations": {
+    "anchor": "Table III, Sec. V.C",
+    "rows": [
+      {"configuration": "full", "accuracy_pct": 91.3, "auroc": 0.936, "aos": 0.598, "latency_ms": 850},
+      {"configuration": "no_crga", "accuracy_pct": 89.5, "auroc": 0.918, "aos": 0.472, "latency_ms": 826},
+      {"configuration": "no_temporal_attention", "accuracy_pct": 88.1, "auroc": 0.903, "aos": 0.498, "latency_ms": 415},
+      {"configuration": "no_spatial_attention", "accuracy_pct": 88.8, "auroc": 0.911, "aos": 0.521, "latency_ms": 524},
+      {"configuration": "no_dilated_conv", "accuracy_pct": 88.5, "auroc": 0.907, "aos": 0.568, "latency_ms": 762},
+      {"configuration": "no_focal_loss", "accuracy_pct": 90.1, "auroc": 0.924, "aos": 0.587, "latency_ms": 850},
+      {"configuration": "hrv_only", "accuracy_pct": 85.9, "auroc": 0.889, "aos": 0.508, "latency_ms": 328},
+      {"configuration": "temp_only", "accuracy_pct": 76.4, "auroc": 0.811, "aos": 0.403, "latency_ms": 291}
+    ],
+    "claims": {
+      "crga_accuracy_gain_pct_points": 1.8,
+      "crga_aos_gain": 0.126,
+      "temporal_attention_drop_pct_points": 3.2,
+      "spatial_attention_drop_pct_points": 2.5,
+      "hrv_fusion_gain_pct_points": 5.4
+    }
+  },
+  "explanation_quality": {
+    "anchor": "Table VIII, Sec. V.B, App. F",
+    "rows": [
+      {"method": "LIME", "comp_at_10": 0.118, "comp_at_20": 0.183, "suff_at_10": 0.398, "suff_at_20": 0.542, "aos": 0.298, "clinician_rating": 2.3},
+      {"method": "SHAP", "comp_at_10": 0.134, "comp_at_20": 0.209, "suff_at_10": 0.431, "suff_at_20": 0.576, "aos": 0.332, "clinician_rating": 2.6},
+      {"method": "Attention (Transformer)", "comp_at_10": 0.156, "comp_at_20": 0.245, "suff_at_10": 0.489, "suff_at_20": 0.631, "aos": 0.371, "clinician_rating": 3.0},
+      {"method": "RETAIN", "comp_at_10": 0.169, "comp_at_20": 0.267, "suff_at_10": 0.524, "suff_at_20": 0.665, "aos": 0.408, "clinician_rating": 3.3},
+      {"method": "SAnD", "comp_at_10": 0.162, "comp_at_20": 0.256, "suff_at_10": 0.508, "suff_at_20": 0.649, "aos": 0.392, "clinician_rating": 3.1},
+      {"method": "RAIM", "comp_at_10": 0.181, "comp_at_20": 0.283, "suff_at_10": 0.549, "suff_at_20": 0.691, "aos": 0.441, "clinician_rating": 3.5},
+      {"method": "ThrombXAI", "comp_at_10": 0.248, "comp_at_20": 0.371, "suff_at_10": 0.673, "suff_at_20": 0.812, "aos": 0.598, "clinician_rating": 4.2}
+    ],
+    "claims": {
+      "comp_at_10_pct": 24.8,
+      "suff_at_20_pct": 81.2,
+      "aos": 0.598,
+      "aos_top_baseline": "RAIM",
+      "aos_improvement_over_baseline_pct": 35.6,
+      "clinician_rating_out_of_5": 4.2
+    }
+  },
+  "edge_deployment": {
+    "anchor": "Table VII, Sec. V.D, App. B",
+    "rows": [
+      {"configuration": "Full Model (FP32)", "accuracy_pct": 91.3, "size_mb": 4.2, "latency_ms": 2150, "power_mw": 720},
+      {"configuration": "Distilled (FP32)", "accuracy_pct": 90.2, "size_mb": 0.52, "latency_ms": 1050, "power_mw": 340},
+      {"configuration": "Distilled (INT8)", "accuracy_pct": 89.8, "size_mb": 0.13, "latency_ms": 850, "power_mw": 145},
+      {"configuration": "Distilled (INT4)", "accuracy_pct": 87.6, "size_mb": 0.07, "latency_ms": 620, "power_mw": 78}
+    ],
+    "claims": {
+      "int8_size_reduction_pct": 97,
+      "int8_latency_reduction_pct": 60,
+      "int8_accuracy_drop_pct": 1.5,
+      "int4_accuracy_drop_pct": 3.7,
+      "int8_latency_target_ms": 850,
+      "mcpu": "ARM Cortex-M7 at 480 MHz with 512 KB SRAM"
+    },
+    "battery": {
+      "capacity_mah": 500,
+      "voltage_v": 3.7,
+      "duty_cycle": 0.5,
+      "energy_wh": 1.85,
+      "effective_power_mw": 73,
+      "runtime_hours": 25
+    }
+  },
+  "prospective": {
+    "anchor": "Table IV, Sec. V.G, App. E",
+    "enrolled": 156,
+    "lost_to_followup": 8,
+    "analysed": 148,
+    "events": {"vte": 17, "dvt": 8, "pe": 3, "total": 28},
+    "severity_case_mix_note": "25 of the 28 events needed treatment",
+    "thrombxai": {
+      "true_positives": 25,
+      "false_positives": 11,
+      "true_negatives": 109,
+      "false_negatives": 3,
+      "sensitivity_pct": 89.3,
+      "specificity_pct": 91.5,
+      "ppv_pct": 69.4,
+      "npv_pct": 97.3,
+      "events_detected_early": 22,
+      "events_detected_early_pct": 78.6,
+      "mean_lead_time_days": 11.2,
+      "mean_lead_time_sd": 5.4,
+      "alert_rate_per_participant_day": 0.21,
+      "clinician_acceptance_pct": 84.7
+    },
+    "standard_screening": {
+      "true_positives": 19,
+      "false_positives": 13,
+      "true_negatives": 107,
+      "false_negatives": 9,
+      "sensitivity_pct": 67.9,
+      "specificity_pct": 89.2,
+      "ppv_pct": 59.4,
+      "npv_pct": 92.2,
+      "events_detected_early": 12,
+      "events_detected_early_pct": 42.9,
+      "mean_lead_time_days": 3.8,
+      "mean_lead_time_sd": 2.6
+    }
+  },
+  "subgroups": {
+    "anchor": "Table XI, Sec. V.H",
+    "age_groups": [
+      {"subgroup": "35-50 years", "n": 312, "prevalence_pct": 18.6, "accuracy_pct": 92.0, "auroc": 0.941, "sensitivity_pct": 90.2, "specificity_pct": 92.4, "aos": 0.608},
+      {"subgroup": "51-65 years", "n": 428, "prevalence_pct": 22.4, "accuracy_pct": 91.4, "auroc": 0.937, "sensitivity_pct": 89.3, "specificity_pct": 92.0, "aos": 0.596},
+      {"subgroup": "66+ years", "n": 334, "prevalence_pct": 24.9, "accuracy_pct": 90.4, "auroc": 0.928, "sensitivity_pct": 87.5, "specificity_pct": 91.4, "aos": 0.582}
+    ],
+    "sex": [
+      {"subgroup": "Female", "n": 464, "prevalence_pct": 23.1, "accuracy_pct": 91.1, "auroc": 0.934, "sensitivity_pct": 88.6, "specificity_pct": 91.8, "aos": 0.592},
+      {"subgroup": "Male", "n": 610, "prevalence_pct": 20.8, "accuracy_pct": 91.5, "auroc": 0.938, "sensitivity_pct": 89.4, "specificity_pct": 92.1, "aos": 0.603}
+    ],
+    "comorbidities": [
+      {"subgroup": "Diabetes", "n": 287, "prevalence_pct": 27.5, "accuracy_pct": 89.9, "auroc": 0.921, "sensitivity_pct": 86.7, "specificity_pct": 91.1, "aos": 0.571},
+      {"subgroup": "Hypertension", "n": 412, "prevalence_pct": 24.3, "accuracy_pct": 90.6, "auroc": 0.928, "sensitivity_pct": 87.9, "specificity_pct": 91.5, "aos": 0.578},
+      {"subgroup": "Cancer history", "n": 156, "prevalence_pct": 32.7, "accuracy_pct": 88.5, "auroc": 0.912, "sensitivity_pct": 84.3, "specificity_pct": 90.5, "aos": 0.556},
+      {"subgroup": "No major comorbidity", "n": 567, "prevalence_pct": 17.8, "accuracy_pct": 92.4, "auroc": 0.945, "sensitivity_pct": 90.8, "specificity_pct": 92.8, "aos": 0.621}
+    ]
+  },
+  "feature_attention": {
+    "anchor": "Table XII, Sec. V.E",
+    "top10": [
+      {"rank": 1, "feature": "LF/HF Ratio", "modality": "HRV", "attention": 0.124, "clinical_rank": 2},
+      {"rank": 2, "feature": "RMSSD", "modality": "HRV", "attention": 0.112, "clinical_rank": 1},
+      {"rank": 3, "feature": "Sample Entropy", "modality": "HRV", "attention": 0.098, "clinical_rank": 4},
+      {"rank": 4, "feature": "Temperature Slope", "modality": "Temp", "attention": 0.089, "clinical_rank": 3},
+      {"rank": 5, "feature": "SDNN", "modality": "HRV", "attention": 0.078, "clinical_rank": 5},
+      {"rank": 6, "feature": "LF Power", "modality": "HRV", "attention": 0.067, "clinical_rank": 7},
+      {"rank": 7, "feature": "DFA alpha", "modality": "HRV", "attention": 0.061, "clinical_rank": 8},
+      {"rank": 8, "feature": "Temp Range", "modality": "Temp", "attention": 0.054, "clinical_rank": 6},
+      {"rank": 9, "feature": "HF Power", "modality": "HRV", "attention": 0.048, "clinical_rank": 9},
+      {"rank": 10, "feature": "pNN50", "modality": "HRV", "attention": 0.043, "clinical_rank": 10}
+    ],
+    "top10_sum": 0.774,
+    "remaining_nine_sum": 0.226,
+    "spearman_rho": 0.871,
+    "spearman_p": "< 0.001"
+  },
+  "confidence_intervals": {
+    "anchor": "App. F.J, Sec. V.J",
+    "bootstrap_iterations": 1000,
+    "metrics": [
+      {"metric": "Accuracy", "units": "pct", "point": 91.3, "low": 90.5, "high": 92.1},
+      {"metric": "AUROC", "units": "auroc", "point": 0.936, "low": 0.928, "high": 0.944},
+      {"metric": "Sensitivity", "units": "pct", "point": 89.1, "low": 87.5, "high": 90.7},
+      {"metric": "Specificity", "units": "pct", "point": 92.0, "low": 90.8, "high": 93.2}
+    ]
+  },
+  "serving_policy": {
+    "anchor": "Sec. VI.A, App. E.A",
+    "low_risk_upper": 0.3,
+    "moderate_risk_upper": 0.7,
+    "tiers": ["monitor", "notify_primary_care", "urgent_notification"],
+    "high_risk_safety_review_threshold": 0.9
+  },
+  "unavailable": {
+    "anchor": "Sec. IV.A.1, Reproducibility Statement",
+    "primary_cohort": "MIMIC-IV Waveform Database (mimic4wdb)",
+    "url": "https://physionet.org/content/mimic4wdb/",
+    "access": "PhysioNet credentialed health data licence",
+    "reason": "de-identified records are credentialed and not redistributable, so cohort-level table values cannot be recomputed from source waveforms here",
+    "prospective_cohort": "156 participants at two academic medical centres under IRB Protocol #2023-0847",
+    "prospective_access": "not released with the manuscript"
+  }
+}

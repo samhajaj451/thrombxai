@@ -1,0 +1,462 @@
+{
+  "schema_version": 1,
+  "root": "TCE_Explainable_AI_Enabled_Wearable_Sensors_for_Real_Time_Thrombotic_Event_Early_Warning",
+  "algorithm": "sha256",
+  "file_count": 90,
+  "excludes": [
+    "integrity_manifest.json"
+  ],
+  "files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "bytes": 653,
+      "sha256": "5dcee7379516f71af16573b09a5a5842c54ae12ea8c64e57c42d230686ff9213"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 165,
+      "sha256": "205b6c1b16a7b26382b1a02fe3d2cbd58238267c32342de73c3e16c177719fa0"
+    },
+    {
+      "path": ".pre-commit-config.yaml",
+      "bytes": 439,
+      "sha256": "e7e5beefcb2ab79d7b71f8be8e8b271a190bbe99483601a779ae36817b10bf47"
+    },
+    {
+      "path": "Dockerfile",
+      "bytes": 317,
+      "sha256": "7e8bf3feb7be279a102a00798e4e97bf74991fdd221694c389c90c97bffe3b7c"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1078,
+      "sha256": "5d051cab7c4cbd316bf9103ad5b6853323d269477a884c1c42d52e76cc396090"
+    },
+    {
+      "path": "Makefile",
+      "bytes": 768,
+      "sha256": "17ac761e3234785ba7213f813bcd55f489f9c724c00934433f623da134b83a75"
+    },
+    {
+      "path": "README.md",
+      "bytes": 8138,
+      "sha256": "d3ac9081b905d420730c78258919e530370051ca7d70fedc001661e483451f59"
+    },
+    {
+      "path": "claim_to_code.json",
+      "bytes": 7659,
+      "sha256": "9f54282d69b2c1eabf5b25ebce87a744c4b69cbcf4f04dbf6cb75d27f3b07bb6"
+    },
+    {
+      "path": "conf/config.yaml",
+      "bytes": 165,
+      "sha256": "912720b68fd78899d9898981491dc66b1d2a7972cfd7835dc889efff57ab3941"
+    },
+    {
+      "path": "conf/experiment/_smoke.yaml",
+      "bytes": 462,
+      "sha256": "45a7401438adc16e2d269cc8a1a5bddd5dcc0c5c0b654ab64eb9c52b51eaa5b3"
+    },
+    {
+      "path": "conf/experiment/ablation_hrv_only.yaml",
+      "bytes": 74,
+      "sha256": "e5fa97b3cced97caefb5dd04e4768b83e66b843be6f767da64da2d73b6b18081"
+    },
+    {
+      "path": "conf/experiment/ablation_no_crga.yaml",
+      "bytes": 66,
+      "sha256": "3623a5d96ddb140ae1740ada9ec5255f9017531eec4bc896b0a3811b1f75bf79"
+    },
+    {
+      "path": "conf/experiment/ablation_no_dilation.yaml",
+      "bytes": 76,
+      "sha256": "817d866a50d50f43c94e306924e22888d27d1bc349ecda7b787297d21b679658"
+    },
+    {
+      "path": "conf/experiment/ablation_no_focal.yaml",
+      "bytes": 74,
+      "sha256": "aa823db04f460bd870d458c8433a23a1dd5c8b0e473415f7583f2b3d671e2134"
+    },
+    {
+      "path": "conf/experiment/ablation_no_spatial.yaml",
+      "bytes": 84,
+      "sha256": "d3a616cd1db27e068e85747e323a2402c2876241ea56e90acb3e58ad8096422c"
+    },
+    {
+      "path": "conf/experiment/ablation_no_temporal.yaml",
+      "bytes": 86,
+      "sha256": "e4f7754edc971b97caf76732e6c484a572b7c8d96e852cf92a2755b6cdc97edb"
+    },
+    {
+      "path": "conf/experiment/ablation_temp_only.yaml",
+      "bytes": 76,
+      "sha256": "946124be160eb3fcb37fffba0685d30ca7099b468f00ed62a422221067e38f4e"
+    },
+    {
+      "path": "conf/experiment/edge_distilled_int4.yaml",
+      "bytes": 92,
+      "sha256": "a5366c0c36f5cd17a11c24ad8aa1f47a40a2efee56e8aa2bfc185ff686ae180b"
+    },
+    {
+      "path": "conf/experiment/edge_distilled_int8.yaml",
+      "bytes": 92,
+      "sha256": "bbd2c9aec90c13089533c0891a6b3fb4f2ce07ae35856d014b0205378ce8ff40"
+    },
+    {
+      "path": "conf/experiment/main.yaml",
+      "bytes": 31,
+      "sha256": "d64588e5f998290bcd86281223c0892e9b9bb068a112b54535dc72556431a6cd"
+    },
+    {
+      "path": "dataset_links.txt",
+      "bytes": 1170,
+      "sha256": "9af85dce8f2acdd2dd07068ee52cee4e6125d55faee15f9bcda8e4b1cc43b307"
+    },
+    {
+      "path": "docs/deviations.md",
+      "bytes": 2273,
+      "sha256": "73c9de26b173be71d346c31542ca477c295db03b5e3498a74cb6436da527567e"
+    },
+    {
+      "path": "docs/implementation-map.md",
+      "bytes": 5100,
+      "sha256": "642fa21a4b6ef928dea69094403ed75535adccad7dbc89847327d1d86c499b11"
+    },
+    {
+      "path": "docs/project-context.md",
+      "bytes": 4163,
+      "sha256": "fd014b131f5ef051fdf694d2d069af3847a48c647131888b0550acef3cf3e452"
+    },
+    {
+      "path": "docs/repo-plan.md",
+      "bytes": 2845,
+      "sha256": "1d59ed59226b53fe6e72d995349db59ce0f174488f4a6d42c5a0851eadc6eb9d"
+    },
+    {
+      "path": "environment.yml",
+      "bytes": 320,
+      "sha256": "6511bad286e4a37eb41280e74ffad4430760c1a7c42f86809cbe09b6b7ea5bca"
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 1505,
+      "sha256": "958be961671b7e29dbf7e13e1e66cfafc708177e63a171b3f85ee78b6c798986"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 66,
+      "sha256": "0ec1ca34a76ad1d3bbb2c074fe9c24c8303c22e4e7a8f4746e9011dc09f097c9"
+    },
+    {
+      "path": "scripts/launch_eval.sh",
+      "bytes": 123,
+      "sha256": "b8604c031e7834aeda675d2c9980d3dead402c77525228d6d6519ff301e0499f"
+    },
+    {
+      "path": "scripts/launch_train.sh",
+      "bytes": 159,
+      "sha256": "3b22e8ee44ce93eeda9161786cceb0cfe661966282a871d9c76dd14e57997d87"
+    },
+    {
+      "path": "scripts/prepare_data.sh",
+      "bytes": 389,
+      "sha256": "562fcdd74586f417984ecd44326e1cdbd38daef591f2cba94e9ed8562e63578a"
+    },
+    {
+      "path": "smoke/tce_reported_values.json",
+      "bytes": 14807,
+      "sha256": "decee2c041e834bf3828cb5952db9ef86bdcbde4cd12a2ad7ed15ec9c5df2987"
+    },
+    {
+      "path": "smoke/tce_smoke.py",
+      "bytes": 56521,
+      "sha256": "32b7fb6d1e81dd69ee24bce9b1065fd4da9f1f49fbd1e002172a181070c4bf9d"
+    },
+    {
+      "path": "smoke_report.txt",
+      "bytes": 8627,
+      "sha256": "ebd9d86c3e6ecdc58dfae9bbeae2f403bcc0a0e9963e767b15953f5ac77dd608"
+    },
+    {
+      "path": "tests/conftest.py",
+      "bytes": 1114,
+      "sha256": "30faaa25ebc0b08eb5bbedcd9011f2ad5e03a6110c5cf2eea308a6ab1c1cb790"
+    },
+    {
+      "path": "tests/test_attention_distributions.py",
+      "bytes": 1838,
+      "sha256": "7bed6888547e1f460b108f2bdbd60da09a0bb83948e4cc669da698830bddbc9a"
+    },
+    {
+      "path": "tests/test_carding_shapes.py",
+      "bytes": 1117,
+      "sha256": "03e9268544f433532bf27015ea3bad3bb708db83a443c170b5b4aefa900dbb6d"
+    },
+    {
+      "path": "tests/test_dyeing_relevance.py",
+      "bytes": 1059,
+      "sha256": "6dab57a3b412061e2b6551001b61f0724ec84c47475a3f4fdae8b99c6eb4b227"
+    },
+    {
+      "path": "tests/test_edge_parity.py",
+      "bytes": 1548,
+      "sha256": "0d5a0f94d4d7c324a0c36c7cce77ef98f4d6c5a5023f078e6b38d79f67d63cab"
+    },
+    {
+      "path": "tests/test_gradient_flow.py",
+      "bytes": 666,
+      "sha256": "3e68aec3587fe2050afce9ea49bfea8d3376d93f7dc68fbaa210026256d81c4d"
+    },
+    {
+      "path": "tests/test_metrics_reference.py",
+      "bytes": 1174,
+      "sha256": "39079e1035d4f6f08da249411effd1e1c4289696079d0efd763547e7bb8feb29"
+    },
+    {
+      "path": "tests/test_no_comments.py",
+      "bytes": 849,
+      "sha256": "c5ea94454ae1dd04b570c1c04a65a74db817aa05490b96bee7af9a270a99e2e8"
+    },
+    {
+      "path": "tests/test_no_forbidden_phrases.py",
+      "bytes": 1226,
+      "sha256": "d562344a1391ae0da071d31ccb4cf81c62e8774df22881366486caad01861434"
+    },
+    {
+      "path": "tests/test_objective_focal.py",
+      "bytes": 896,
+      "sha256": "5427c60d724b44617f1b72578122a135da381af1dce88550b3a496b69a2b8f5d"
+    },
+    {
+      "path": "tests/test_overfit_single_batch.py",
+      "bytes": 1216,
+      "sha256": "a2a2f98fa602df010c9d470d8ae2e3d520190ff1d63be63f0c30eeb56b1cd27e"
+    },
+    {
+      "path": "tests/test_pulse_physiology.py",
+      "bytes": 879,
+      "sha256": "34d93fa330ee60f0110074fb55927f52cb29cf223955ca1bcf2a7f6cdfc4b628"
+    },
+    {
+      "path": "tests/test_spinning_causality.py",
+      "bytes": 883,
+      "sha256": "ec0e44e25121a18bb5f4a3c2c34163c5d65d614ad9eb433a77caab861407348b"
+    },
+    {
+      "path": "tests/test_training_smoke.py",
+      "bytes": 1162,
+      "sha256": "397008ca52f288aa91993de60b9c965a8eb6525b7cbe603216a21fc89d021d5a"
+    },
+    {
+      "path": "thrombxai/__init__.py",
+      "bytes": 181,
+      "sha256": "b8dea201bafb6767a59671298075509fdbbdcdf541464200971c3bbe55b72a4d"
+    },
+    {
+      "path": "thrombxai/blending/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "thrombxai/blending/roving.py",
+      "bytes": 1418,
+      "sha256": "b9427902214c2ad94c56e0389c990f222b79777ad5b346ffb6d868c4b10e2ddc"
+    },
+    {
+      "path": "thrombxai/carding/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "thrombxai/carding/pulse.py",
+      "bytes": 6555,
+      "sha256": "f914a996fb7939f99ab8ae0cd08ea6bb2aa0c47a1b241398a8bf3195feacb716"
+    },
+    {
+      "path": "thrombxai/carding/thermal.py",
+      "bytes": 2706,
+      "sha256": "beb07f527975411c4c164117d42be8ccde99b3ffbe3205f5f0061162489e0f89"
+    },
+    {
+      "path": "thrombxai/dyeing/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "thrombxai/dyeing/mordant.py",
+      "bytes": 2404,
+      "sha256": "d89ba364eaf91d9eda2a48fb1866bb6d775139ae3811a97f1758c9896cf01206"
+    },
+    {
+      "path": "thrombxai/dyeing/vat.py",
+      "bytes": 956,
+      "sha256": "e627ad4f8d8f43219404977944e684120c558552b253df07fa903574e4a2e1e5"
+    },
+    {
+      "path": "thrombxai/fabric.py",
+      "bytes": 1844,
+      "sha256": "72dd8477356dbd9ef0571383593653894482399ddba5db1412657bcb0c154308"
+    },
+    {
+      "path": "thrombxai/finishing/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "thrombxai/finishing/objective.py",
+      "bytes": 1158,
+      "sha256": "6d7ae2c709876ce349ab62bf96cae9682b4ac201d1944971e032011298dd3540"
+    },
+    {
+      "path": "thrombxai/finishing/press.py",
+      "bytes": 717,
+      "sha256": "e81406221f28e6b586ee8d79f9899c41a48e6c2cc0487922e55af531a21bb7b4"
+    },
+    {
+      "path": "thrombxai/floor/__init__.py",
+      "bytes": 613,
+      "sha256": "a5b08112f2468b2c6299758d3b4e9155c5c88080df643b93896ee2c6b09a7487"
+    },
+    {
+      "path": "thrombxai/floor/audit.py",
+      "bytes": 1886,
+      "sha256": "495310def06e4f72cdb5d9066b771f4d42ae1be29d0533cf8b1b0ea22b8d0101"
+    },
+    {
+      "path": "thrombxai/floor/bale_out.py",
+      "bytes": 1573,
+      "sha256": "a0257cde6b9eac16282892d553392ed3e7d97ea1a13414d7d2999d4d94c52d99"
+    },
+    {
+      "path": "thrombxai/floor/pick.py",
+      "bytes": 1393,
+      "sha256": "198858985eda860194f247279ab148e72b10e7233fac095dabd861d56cb16aa6"
+    },
+    {
+      "path": "thrombxai/floor/ship.py",
+      "bytes": 1690,
+      "sha256": "99984427e1053cee9d8518d3f218e1a52c6cf9ed268e327c3c41fedb85a5a695"
+    },
+    {
+      "path": "thrombxai/floor/weave.py",
+      "bytes": 931,
+      "sha256": "314d641700fe31727816d4232c1cf9148a4221c30221809277b994d5d163eb40"
+    },
+    {
+      "path": "thrombxai/inspection/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "thrombxai/inspection/burling.py",
+      "bytes": 1860,
+      "sha256": "4a3d53d8de0f09736a789e03db7d57e5ce78be3fcc4c61310d4bef6ad353f27a"
+    },
+    {
+      "path": "thrombxai/inspection/gauge.py",
+      "bytes": 4427,
+      "sha256": "238bd3a703f32939ef4f1e1d924b5be0d001c6762a31dabc087af2d46f91621e"
+    },
+    {
+      "path": "thrombxai/loom/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "thrombxai/loom/shuttle.py",
+      "bytes": 5062,
+      "sha256": "4eef2c12c780ab785ae37f80aa9ef9fcfc638b69a83904d870bc5ac2fdb2fa55"
+    },
+    {
+      "path": "thrombxai/loom/warp_beam.py",
+      "bytes": 611,
+      "sha256": "e6312ae7946dbde40ef18bc6a5b25c36d128acbd37f89a79fdd5c3404cc91543"
+    },
+    {
+      "path": "thrombxai/opening/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "thrombxai/opening/bale.py",
+      "bytes": 1894,
+      "sha256": "7bd4feba39a34b96dbb19731bef672181943d28bf2c17a77f537a5dc7541083a"
+    },
+    {
+      "path": "thrombxai/opening/sliver.py",
+      "bytes": 4678,
+      "sha256": "5c63383b6f023c3346f9230e6c433b1ac55d984318787219caa508b7d3469a2d"
+    },
+    {
+      "path": "thrombxai/order.py",
+      "bytes": 3739,
+      "sha256": "11e02bde503cef6d18ffe0d5c97216c57cdd21d6098bf8d724a3a0cd9d293556"
+    },
+    {
+      "path": "thrombxai/pressing/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "thrombxai/pressing/baling.py",
+      "bytes": 1085,
+      "sha256": "a77b091c0acfd09973b12a327ae3584557346a08a0b6c570d2ac42ee93c37cc3"
+    },
+    {
+      "path": "thrombxai/pressing/calender.py",
+      "bytes": 1667,
+      "sha256": "2277f833465d54bec87546e66c3511199c414a7999a83313fabbb5a0e0015c71"
+    },
+    {
+      "path": "thrombxai/pressing/seam.py",
+      "bytes": 1665,
+      "sha256": "6464f55bfbadf5dcab00d396cbfba2231c1fd4e9c13d659661d4c2a2686c61f8"
+    },
+    {
+      "path": "thrombxai/spindle.py",
+      "bytes": 1631,
+      "sha256": "4b56cc9f757db423d3b8b183f85eff3101fbee526454028313cf885264d3a53e"
+    },
+    {
+      "path": "thrombxai/spinning/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "thrombxai/spinning/twist.py",
+      "bytes": 2187,
+      "sha256": "ffda855defd5af45a5a96ffc0f4d3c65eb0aea4dc0cae7602fb6fad386ecc1cf"
+    },
+    {
+      "path": "thrombxai/warping/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "thrombxai/warping/heddle.py",
+      "bytes": 1513,
+      "sha256": "d444a0d65aa680258f4a8ce074320294e0382d591a7da437719a9edbd6a5e31a"
+    },
+    {
+      "path": "thrombxai/weaving/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "thrombxai/weaving/shed.py",
+      "bytes": 1261,
+      "sha256": "24f8073c682df6b9620bb1c2029d2d4272cef0a508d339e86fe416bc11cfedef"
+    },
+    {
+      "path": "thrombxai/yarn.py",
+      "bytes": 505,
+      "sha256": "47eb5da84879a0d81d24cc30e199344c7412f6c5089c5994182fb7ece37f783e"
+    },
+    {
+      "path": "verification_report.json",
+      "bytes": 25944,
+      "sha256": "9ce4ab2d9e7b7d5fd1c7793a1cdd33fc66e96c64c168b7505bb93a34decdc41f"
+    }
+  ],
+  "manifest_digest": "afb312b243374e55112c00a997f1a0deb94e07a0f807636d00b5b8af714c581f"
+}

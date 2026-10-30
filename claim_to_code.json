@@ -1,0 +1,241 @@
+{
+  "schema_version": 1,
+  "paper_title": "Explainable AI-Enabled Wearable Sensors for Real-Time Thrombotic Event Early Warning in Connected Health Environments",
+  "values_file": "tce_reported_values.json",
+  "entries": [
+    {
+      "claim_id": "C-features",
+      "paper_location": "Sec. III.A, Eq. (6)",
+      "claim": "two sensor modalities yield a 19-feature tensor (12 HRV plus 7 temperature)",
+      "code_anchor": "thrombxai/order.py:29",
+      "check_ids": [
+        "A6"
+      ],
+      "status": "PASS"
+    },
+    {
+      "claim_id": "C-receptive-field",
+      "paper_location": "Sec. III.C.1, Eq. (9)",
+      "claim": "four dilated causal layers with kernel three give a 31-step receptive field",
+      "code_anchor": "thrombxai/spinning/twist.py:10",
+      "check_ids": [
+        "C5",
+        "K9"
+      ],
+      "status": "PASS"
+    },
+    {
+      "claim_id": "C-temporal-attention",
+      "paper_location": "Sec. III.C.2, Eq. (14)",
+      "claim": "temporal self-attention aggregates to a distribution over time steps",
+      "code_anchor": "thrombxai/warping/heddle.py:12",
+      "check_ids": [
+        "K4"
+      ],
+      "status": "PASS"
+    },
+    {
+      "claim_id": "C-spatial-attention",
+      "paper_location": "Sec. III.C.3, Eq. (17)",
+      "claim": "spatial feature attention sums to one over the 19 features",
+      "code_anchor": "thrombxai/weaving/shed.py:10",
+      "check_ids": [
+        "K3"
+      ],
+      "status": "PASS"
+    },
+    {
+      "claim_id": "C-clinical-prior",
+      "paper_location": "Sec. III.D.1, Eq. (20)",
+      "claim": "a clinical relevance vector is read from knowledge-graph node degree",
+      "code_anchor": "thrombxai/dyeing/mordant.py:79",
+      "check_ids": [
+        "K12"
+      ],
+      "status": "PASS"
+    },
+    {
+      "claim_id": "C-warmup",
+      "paper_location": "Sec. III.D.3, Eq. (23)",
+      "claim": "the clinical prior weight anneals linearly to zero over the warmup window",
+      "code_anchor": "thrombxai/dyeing/vat.py:31",
+      "check_ids": [
+        "K12"
+      ],
+      "status": "PASS"
+    },
+    {
+      "claim_id": "C-focal-loss",
+      "paper_location": "Sec. III.E, Eq. (26)",
+      "claim": "focal loss with gamma two addresses class imbalance",
+      "code_anchor": "thrombxai/finishing/objective.py:14",
+      "check_ids": [
+        "K5"
+      ],
+      "status": "PASS"
+    },
+    {
+      "claim_id": "C-prediction-head",
+      "paper_location": "Sec. III.C.4, Eq. (19)",
+      "claim": "the head maps the pooled and context vectors to a risk probability",
+      "code_anchor": "thrombxai/finishing/press.py:10",
+      "check_ids": [
+        "K2"
+      ],
+      "status": "PASS"
+    },
+    {
+      "claim_id": "C-subject-split",
+      "paper_location": "Sec. IV.A.2",
+      "claim": "a 70/15/15 subject-level partition keeps every patient inside one split",
+      "code_anchor": "thrombxai/opening/bale.py:15",
+      "check_ids": [
+        "A3",
+        "K1"
+      ],
+      "status": "PASS"
+    },
+    {
+      "claim_id": "C-optimizer",
+      "paper_location": "Sec. IV.D, Table VI",
+      "claim": "AdamW with weight decay one e-4 under cosine annealing",
+      "code_anchor": "thrombxai/loom/warp_beam.py:9",
+      "check_ids": [
+        "K6"
+      ],
+      "status": "PASS"
+    },
+    {
+      "claim_id": "C-training-loop",
+      "paper_location": "Sec. IV.D",
+      "claim": "the loop runs the configured epochs and keeps the best validation checkpoint",
+      "code_anchor": "thrombxai/loom/shuttle.py:31",
+      "check_ids": [
+        "K7",
+        "K8"
+      ],
+      "status": "PASS"
+    },
+    {
+      "claim_id": "C-quantisation",
+      "paper_location": "Sec. III.F.2, Eq. (28)",
+      "claim": "symmetric integer quantisation shrinks the edge model to 0.13 MB",
+      "code_anchor": "thrombxai/pressing/baling.py:12",
+      "check_ids": [
+        "F1"
+      ],
+      "status": "PASS"
+    },
+    {
+      "claim_id": "C-headline",
+      "paper_location": "Table II, Sec. V.A",
+      "claim": "test accuracy 91.3 and AUROC 0.936, ahead of the best baseline",
+      "code_anchor": "thrombxai/inspection/gauge.py:116",
+      "check_ids": [
+        "C1",
+        "C2",
+        "C3",
+        "C4"
+      ],
+      "status": "FAIL"
+    },
+    {
+      "claim_id": "C-ablations",
+      "paper_location": "Table III, Sec. V.C",
+      "claim": "the ablation rows reproduce every reported component gain",
+      "code_anchor": "thrombxai/order.py:115",
+      "check_ids": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6"
+      ],
+      "status": "PASS"
+    },
+    {
+      "claim_id": "C-explanation-quality",
+      "paper_location": "Table VIII, Sec. V.B, App. F.A",
+      "claim": "comprehensiveness, sufficiency and overlap beat the post-hoc baselines",
+      "code_anchor": "thrombxai/inspection/burling.py:1",
+      "check_ids": [
+        "E1",
+        "E2",
+        "E3",
+        "E4"
+      ],
+      "status": "PASS"
+    },
+    {
+      "claim_id": "C-edge-serving",
+      "paper_location": "Table VII, Sec. V.D, App. B",
+      "claim": "INT8 serving holds 89.8 accuracy at 0.13 MB and 850 ms on a 145 mW budget",
+      "code_anchor": "thrombxai/pressing/seam.py:37",
+      "check_ids": [
+        "F1",
+        "F2",
+        "F3",
+        "F5",
+        "F6"
+      ],
+      "status": "PASS"
+    },
+    {
+      "claim_id": "C-cohort",
+      "paper_location": "Table I, Sec. IV.A.1",
+      "claim": "2,847 patients, 4,271 four-hour windows, 21.9 per cent positive",
+      "code_anchor": "thrombxai/opening/sliver.py:77",
+      "check_ids": [
+        "A1",
+        "A2",
+        "I1"
+      ],
+      "status": "NOT_RUN",
+      "note": "the aggregates are internally consistent, but the Waveform cohort is credentialed so no value is recomputed from source waveforms"
+    },
+    {
+      "claim_id": "C-prospective",
+      "paper_location": "Table IV, Sec. V.G",
+      "claim": "89.3 per cent sensitivity and 91.5 per cent specificity at 156 participants",
+      "code_anchor": "scripts/prepare_data.sh:1",
+      "check_ids": [
+        "B7",
+        "B8",
+        "I2"
+      ],
+      "status": "NOT_RUN",
+      "note": "the prospective cohort is not released, and the published 2x2 counts do not reproduce the reported specificity"
+    }
+  ],
+  "deviations": [
+    {
+      "id": "D1",
+      "paper_location": "Table V",
+      "what_departs": "the full model carries 1.36M parameters against a tabulated 1.08M",
+      "why": "the manuscript leaves the spatial-attention inner width and the per-feature embedding width unnamed; the release fixes them at 64 and 256 as recorded in docs/deviations.md D6",
+      "status": "open"
+    },
+    {
+      "id": "D2",
+      "paper_location": "Sec. IV.A.1",
+      "what_departs": "the smoke cohort is 96 subjects at 48 steps, hidden width 48",
+      "why": "the Waveform records cannot be redistributed and the full-width model does not fit inside a CPU smoke budget",
+      "status": "accepted"
+    },
+    {
+      "id": "D3",
+      "paper_location": "Sec. IV.D",
+      "what_departs": "the smoke trains two epochs with dropout disabled",
+      "why": "the smoke exists to show the pipeline runs end to end, so the schedule is shortened and dropout is switched off to keep the run repeatable",
+      "status": "accepted"
+    },
+    {
+      "id": "D4",
+      "paper_location": "Table IV",
+      "what_departs": "the reported specificity of 91.5 per cent is left unreconciled",
+      "why": "109 true negatives over 120 condition negatives is 90.8 per cent, so the smoke reports the gap rather than bending the arithmetic; no source records exist to settle it",
+      "status": "unresolved"
+    }
+  ]
+}
